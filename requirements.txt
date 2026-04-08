@@ -1,4 +1,4 @@
 httpx
 openai
 anthropic
-dotenv
+python-dotenv
