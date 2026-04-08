@@ -1,26 +1,28 @@
 from typing import Optional
-from openai import AsyncOpenAI
+from anthropic import AsyncAnthropic
 
 from infrastructure.llm_clients.base import get_env
 
 
-class OpenAIClient:
+class AnthropicClient:
     """
-    OpenAI LLM client using async chat completions API.
+    Anthropic LLM client using messages API.
     """
 
     def __init__(self, model: Optional[str] = None):
-        self.client = AsyncOpenAI(api_key=get_env("OPENAI_API_KEY"))
-        self.model = model or get_env("DEFAULT_MODEL", "gpt-4.1-mini")
+        self.client = AsyncAnthropic(api_key=get_env("ANTHROPIC_API_KEY"))
+        self.model = model or get_env("DEFAULT_MODEL", "claude-3-opus-20240229")
 
     async def generate(self, prompt: str) -> str:
         """
-        Send a prompt to OpenAI and return the generated response.
+        Send a prompt to Anthropic and return the generated response.
         """
-        response = await self.client.chat.completions.create(
+        response = await self.client.messages.create(
             model=self.model,
+            max_tokens=1024,
             messages=[{"role": "user", "content": prompt}],
         )
 
-        content = response.choices[0].message.content
-        return content or ""
+        return "".join(
+            block.text for block in response.content if hasattr(block, "text")
+        )
