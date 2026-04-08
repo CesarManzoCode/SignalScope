@@ -12,5 +12,8 @@
   "priority": {
     "prefer_high_score": true,
     "prefer_recent": true
+  },
+  "output": {
+    "format": "markdown"
   }
 }
