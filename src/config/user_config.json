@@ -4,7 +4,7 @@
     "provider": "openai"
   },
   "technologies": ["python", "ai", "backend"],
-  "topics": ["security", "llms"],
+  "topics": ["security", "llm"],
   "sources": {
     "include": [],
     "exclude": []

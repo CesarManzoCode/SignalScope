@@ -8,11 +8,13 @@ exposing them through a unified interface for the pipeline to consume.
 from infrastructure.sources.hacker_news import HackerNewsClient
 from infrastructure.sources.github import GitHubClient
 from infrastructure.sources.dev_to import DevToClient
+from infrastructure.sources.arxiv import ArXivClient
 from core.types.source import Source
 
 hn_client = HackerNewsClient()
-gh_client = GitHubClient()   # Token read from GITHUB_TOKEN env var (optional)
+gh_client = GitHubClient()   # Token read from GITHUB_TOKEN env var
 dt_client = DevToClient()    # API key read from DEVTO_API_KEY env var (optional)
+ax_client = ArXivClient()    # Keywords read from config/user_config.json
 
 
 async def fetch_hacker_news() -> list:
@@ -25,6 +27,10 @@ async def fetch_github() -> list:
 
 async def fetch_dev_to() -> list:
     return await dt_client.fetch_and_transform()
+
+
+async def fetch_arxiv() -> list:
+    return await ax_client.fetch_and_transform()
 
 
 SOURCES = [
@@ -42,6 +48,11 @@ SOURCES = [
         name="dev_to",
         category="dev",
         fetch=fetch_dev_to,
+    ),
+    Source(
+        name="arxiv",
+        category="research",
+        fetch=fetch_arxiv,
     ),
 ]
 
