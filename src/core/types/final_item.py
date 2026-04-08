@@ -10,3 +10,4 @@ class FinalItem:
     details: str
     source: str
     url: str
+    priority: str
