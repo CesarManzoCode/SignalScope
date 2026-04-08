@@ -1,0 +1,13 @@
+{
+  "mode": "dev",
+  "technologies": ["python", "ai", "backend"],
+  "topics": ["security", "llms"],
+  "sources": {
+    "include": [],
+    "exclude": []
+  },
+  "priority": {
+    "prefer_high_score": true,
+    "prefer_recent": true
+  }
+}
