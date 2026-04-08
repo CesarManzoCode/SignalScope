@@ -1,28 +1,27 @@
 from typing import List
+import json
 from core.types.final_item import FinalItem
 
 
 def create_final_items(raw_outputs: List[str]) -> List[FinalItem]:
-    """
-    Convert LLM outputs (strings) into structured FinalItem objects.
-    """
-
     final_items = []
 
     for output in raw_outputs:
-        title = extract_title(output)
-        summary = extract_section(output, "Summary")
-        key_points = extract_list(output, "Key Points")
-        details = extract_section(output, "Details")
+        text = output.strip()
+        if text.startswith("```"):
+            text = text.replace("```json", "").replace("```", "").strip()
+
+        parsed = json.loads(text)
 
         final_items.append(
             FinalItem(
-                title=title,
-                summary=summary,
-                key_points=key_points,
-                details=details,
-                source="",  # optional for now
-                url=""      # optional for now
+                title=parsed.get("title", ""),
+                summary=parsed.get("summary", ""),
+                key_points=parsed.get("key_points", []),
+                details=parsed.get("details", ""),
+                source="",
+                url="",
+                priority=parsed.get("priority", "optional")
             )
         )
 

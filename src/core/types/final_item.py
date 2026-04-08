@@ -11,3 +11,6 @@ class FinalItem:
     source: str
     url: str
     priority: str
+
+    def __str__(self):
+        return f"{self.title} {self.summary} {self.key_points} {self.details}"

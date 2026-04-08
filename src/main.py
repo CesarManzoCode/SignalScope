@@ -1,6 +1,7 @@
 import asyncio
 
 from config.user_config import load_user_config
+from config.protocols.priority_rank import build_priority_rank_protocol
 
 from infrastructure.sources.registry import get_all_sources
 from modules.llm.llm_selector import get_llm_client
@@ -39,7 +40,8 @@ async def main():
     llm_client = get_llm_client(config)
 
     # 7. Process with LLM (raw text outputs)
-    raw_outputs = await process_items(filtered_items, llm_client)
+    protocols = build_priority_rank_protocol(config.get("mode", "dev"))
+    raw_outputs = await process_items(filtered_items, llm_client, protocols)
 
     print(f"LLM processed items: {len(raw_outputs)}")
 

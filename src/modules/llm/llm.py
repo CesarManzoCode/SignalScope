@@ -11,12 +11,12 @@ async def process_items(
     items: List[RawItem],
     llm_client: LLMClient,
     protocols: str = ""
-) -> List[FinalItem]:
+) -> List[str]:
     """
     Process RawItems → FinalItems using LLM (JSON output).
     """
 
-    results: List[FinalItem] = []
+    results: List[str] = []
 
     for item in items:
         content = build_content(item)
@@ -26,17 +26,7 @@ async def process_items(
 
         parsed = safe_json_load(response)
 
-        final_item = FinalItem(
-            title=parsed.get("title", ""),
-            summary=parsed.get("summary", ""),
-            key_points=parsed.get("key_points", []),
-            details=parsed.get("details", ""),
-            source=item.source,
-            url=item.url,
-            priority=parsed.get("priority", "optional")
-        )
-
-        results.append(final_item)
+        results.append(response)
 
     return results
 
