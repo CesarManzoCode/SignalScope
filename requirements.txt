@@ -2,4 +2,3 @@ httpx
 openai
 anthropic
 dotenv
-requests
