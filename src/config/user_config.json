@@ -1,5 +1,8 @@
 {
   "mode": "dev",
+  "llm": {
+    "provider": "openai"
+  },
   "technologies": ["python", "ai", "backend"],
   "topics": ["security", "llms"],
   "sources": {
