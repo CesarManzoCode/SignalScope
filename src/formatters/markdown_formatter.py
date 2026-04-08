@@ -4,8 +4,8 @@ from typing import List
 
 from core.types.final_item import FinalItem
 
-
-OUTPUT_DIR = Path("output")
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
+OUTPUT_DIR = BASE_DIR / "output"
 
 
 def save_as_markdown(items: List[FinalItem]) -> Path:
