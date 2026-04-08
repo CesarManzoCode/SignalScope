@@ -52,13 +52,13 @@ Fuentes → Investigación → Filtro → LLM → Reporte Clasificado
 
 ---
 
-## Proveedores LLM Soportados
+## Proveedores LLM soportados
 
 | Proveedor | Requiere Clave | Local |
 |-----------|:--------------:|:-----:|
-| OpenAI    | ✅             | ❌    |
-| Anthropic | ✅             | ❌    |
-| Ollama    | ❌             | ✅    |
+| OpenAI    |       ✅        |   ❌   |
+| Anthropic |       ✅        |   ❌   |
+| Ollama    |       ❌        |   ✅   |
 
 ---
 
@@ -66,11 +66,11 @@ Fuentes → Investigación → Filtro → LLM → Reporte Clasificado
 
 Cada elemento procesado por el LLM recibe una de tres etiquetas de prioridad:
 
-| Nivel      | Significado |
-|------------|-------------|
-| `critical` | Requiere atención inmediata — cambios críticos, exploits activos, incidentes mayores |
-| `important`| Muy relevante para tu trabajo — vale la pena leerlo hoy |
-| `optional` | Informativo o experimental — léelo cuando tengas tiempo |
+| Nivel       | Significado                                                                          |
+|-------------|--------------------------------------------------------------------------------------|
+| `critical`  | Requiere atención inmediata — cambios críticos, exploits activos, incidentes mayores |
+| `important` | Muy relevante para tu trabajo — vale la pena leerlo hoy                              |
+| `optional`  | Informativo o experimental — léelo cuando tengas tiempo                              |
 
 Las reglas de prioridad se ajustan automáticamente según el `mode` que configures (`dev` o `security`).
 
@@ -214,21 +214,21 @@ python main.py
 }
 ```
 
-| Campo            | Opciones                              | Descripción                                              |
-|------------------|---------------------------------------|----------------------------------------------------------|
-| `mode`           | `"dev"`, `"security"`                 | Ajusta las reglas de prioridad del LLM según tu caso     |
-| `llm.provider`   | `"openai"`, `"anthropic"`, `"ollama"` | Qué backend de LLM utilizar                              |
-| `technologies`   | Cualquier lista de strings            | Palabras clave para filtrar contenido por stack técnico  |
-| `topics`         | Cualquier lista de strings            | Temas de interés (ej. `"security"`, `"llms"`)            |
-| `prefer_high_score` | `true` / `false`                   | Priorizar contenido con alta puntuación de la comunidad  |
-| `prefer_recent`  | `true` / `false`                      | Favorecer elementos publicados recientemente             |
-| `output.format`  | `"markdown"`                          | Formato de salida (Markdown es el valor por defecto)     |
+| Campo               | Opciones                              | Descripción                                             |
+|---------------------|---------------------------------------|---------------------------------------------------------|
+| `mode`              | `"dev"`, `"security"`                 | Ajusta las reglas de prioridad del LLM según tu caso    |
+| `llm.provider`      | `"openai"`, `"anthropic"`, `"ollama"` | Qué backend de LLM utilizar                             |
+| `technologies`      | Cualquier lista de strings            | Palabras clave para filtrar contenido por stack técnico |
+| `topics`            | Cualquier lista de strings            | Temas de interés (ej. `"security"`, `"llms"`)           |
+| `prefer_high_score` | `true` / `false`                      | Priorizar contenido con alta puntuación de la comunidad |
+| `prefer_recent`     | `true` / `false`                      | Favorecer elementos publicados recientemente            |
+| `output.format`     | `"markdown"`                          | Formato de salida (Markdown es el valor por defecto)    |
 
 ---
 
 ### Referencia de Variables de Entorno
 
-`.env` controla el acceso a las APIs:
+`.env` controla el acceso a las API:
 
 ```env
 OPENAI_API_KEY=your_openai_api_key_here

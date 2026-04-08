@@ -56,9 +56,9 @@ Sources → Research → Filter → LLM → Ranked Report
 
 | Provider  | Requires Key | Local |
 |-----------|:------------:|:-----:|
-| OpenAI    | ✅           | ❌    |
-| Anthropic | ✅           | ❌    |
-| Ollama    | ❌           | ✅    |
+| OpenAI    |      ✅       |   ❌   |
+| Anthropic |      ✅       |   ❌   |
+| Ollama    |      ❌       |   ✅   |
 
 ---
 
@@ -66,11 +66,11 @@ Sources → Research → Filter → LLM → Ranked Report
 
 Each item processed by the LLM receives one of three priority labels:
 
-| Level      | Meaning |
-|------------|---------|
-| `critical` | Requires immediate attention — breaking changes, active exploits, major incidents |
-| `important`| Highly relevant to your work — worth reading today |
-| `optional` | Informational or experimental — read when you have time |
+| Level       | Meaning                                                                           |
+|-------------|-----------------------------------------------------------------------------------|
+| `critical`  | Requires immediate attention — breaking changes, active exploits, major incidents |
+| `important` | Highly relevant to your work — worth reading today                                |
+| `optional`  | Informational or experimental — read when you have time                           |
 
 Priority rules adjust automatically based on the `mode` you configure (`dev` or `security`).
 
@@ -214,15 +214,15 @@ python main.py
 }
 ```
 
-| Field            | Options                          | Description                                      |
-|------------------|----------------------------------|--------------------------------------------------|
-| `mode`           | `"dev"`, `"security"`            | Adjusts LLM priority rules for your use case     |
-| `llm.provider`   | `"openai"`, `"anthropic"`, `"ollama"` | Which LLM backend to use                    |
-| `technologies`   | Any string list                  | Keywords used to filter content by tech stack    |
-| `topics`         | Any string list                  | Topics of interest (e.g. `"security"`, `"llms"`) |
-| `prefer_high_score` | `true` / `false`              | Prioritize highly-scored community content       |
-| `prefer_recent`  | `true` / `false`                 | Favor recently published items                   |
-| `output.format`  | `"markdown"`                     | Output format (Markdown is the default)          |
+| Field               | Options                               | Description                                      |
+|---------------------|---------------------------------------|--------------------------------------------------|
+| `mode`              | `"dev"`, `"security"`                 | Adjusts LLM priority rules for your use case     |
+| `llm.provider`      | `"openai"`, `"anthropic"`, `"ollama"` | Which LLM backend to use                         |
+| `technologies`      | Any string list                       | Keywords used to filter content by tech stack    |
+| `topics`            | Any string list                       | Topics of interest (e.g. `"security"`, `"llms"`) |
+| `prefer_high_score` | `true` / `false`                      | Prioritize highly-scored community content       |
+| `prefer_recent`     | `true` / `false`                      | Favor recently published items                   |
+| `output.format`     | `"markdown"`                          | Output format (Markdown is the default)          |
 
 ---
 
