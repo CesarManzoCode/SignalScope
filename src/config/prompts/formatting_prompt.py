@@ -4,29 +4,24 @@ def build_formatting_prompt(content: str) -> str:
     return f"""
 {build_base_prompt()}
 
-Your task is to transform the following content into a structured technical report.
+Your task is to transform the following content into a structured JSON object.
 
-Instructions:
-- Organize information logically
-- Use clear sections and headings
-- Keep content readable and well structured
-- Do NOT add new information
-- Do NOT remove important details
-- Improve clarity and presentation
+STRICT RULES:
+- Output ONLY valid JSON
+- Do NOT include explanations
+- Do NOT include markdown
+- Do NOT include comments
+- Do NOT hallucinate or add information
+- Use ONLY the provided content
 
-Output format (IMPORTANT):
+JSON FORMAT:
 
-# Title
-
-## Summary
-...
-
-## Key Points
-- ...
-- ...
-
-## Details
-...
+{{
+  "title": "...",
+  "summary": "...",
+  "key_points": ["...", "..."],
+  "details": "..."
+}}
 
 Content:
 {content}
