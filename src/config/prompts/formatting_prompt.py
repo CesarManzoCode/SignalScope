@@ -20,7 +20,8 @@ JSON FORMAT:
   "title": "...",
   "summary": "...",
   "key_points": ["...", "..."],
-  "details": "..."
+  "details": "...",
+  priority: "important"
 }}
 
 Content:
