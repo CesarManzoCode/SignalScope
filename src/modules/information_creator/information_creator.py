@@ -1,31 +1,21 @@
 from typing import List
-import json
+from core.types.llm_output import LLMOutput
 from core.types.final_item import FinalItem
 
 
-def create_final_items(raw_outputs: List[str]) -> List[FinalItem]:
-    final_items = []
-
-    for output in raw_outputs:
-        text = output.strip()
-        if text.startswith("```"):
-            text = text.replace("```json", "").replace("```", "").strip()
-
-        parsed = json.loads(text)
-
-        final_items.append(
-            FinalItem(
-                title=parsed.get("title", ""),
-                summary=parsed.get("summary", ""),
-                key_points=parsed.get("key_points", []),
-                details=parsed.get("details", ""),
-                source="",
-                url="",
-                priority=parsed.get("priority", "optional")
-            )
+def create_final_items(raw_outputs: List[LLMOutput]) -> List[FinalItem]:
+    return [
+        FinalItem(
+            title=o.title,
+            summary=o.summary,
+            key_points=o.key_points,
+            details=o.details,
+            source=o.source,
+            url=o.url,
+            priority=o.priority
         )
-
-    return final_items
+        for o in raw_outputs
+    ]
 
 
 # -------------------------
