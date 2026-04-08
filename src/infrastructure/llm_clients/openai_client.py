@@ -1,9 +1,7 @@
 from typing import Optional
-import os
-from dotenv import load_dotenv
 from openai import AsyncOpenAI
 
-load_dotenv()
+from infrastructure.llm_clients.base import get_env
 
 
 class OpenAIClient:
@@ -12,8 +10,8 @@ class OpenAIClient:
     """
 
     def __init__(self, model: Optional[str] = None):
-        self.client = AsyncOpenAI(api_key=os.getenv("OPENAI_API_KEY"))
-        self.model = model or os.getenv("DEFAULT_MODEL", "gpt-4.1-mini")
+        self.client = AsyncOpenAI(api_key=get_env("OPENAI_API_KEY"))
+        self.model = model or get_env("DEFAULT_MODEL", "gpt-4.1-mini")
 
     async def generate(self, prompt: str) -> str:
         """
