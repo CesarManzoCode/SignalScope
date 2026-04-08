@@ -9,6 +9,8 @@ from modules.source_selector.source_selector import select_sources
 from modules.research.research import run_research
 from modules.filter.filter import filter_items
 from modules.llm.llm import process_items
+from modules.information_creator.information_creator import create_final_items
+from modules.converter.converter import convert
 
 
 async def main():
@@ -36,14 +38,20 @@ async def main():
     # 6. Initialize LLM client
     llm_client = get_llm_client(config)
 
-    # 7. Process with LLM
-    results = await process_items(filtered_items, llm_client)
+    # 7. Process with LLM (raw text outputs)
+    raw_outputs = await process_items(filtered_items, llm_client)
 
-    # 8. Output results (simple print for MVP)
-    print("\n=== RESULTS ===\n")
+    print(f"LLM processed items: {len(raw_outputs)}")
 
-    for i, result in enumerate(results, 1):
-        print(f"{i}. {result}\n{'-' * 40}")
+    # 8. Create structured FinalItems
+    final_items = create_final_items(raw_outputs)
+
+    print(f"Final items created: {len(final_items)}")
+
+    # 9. Convert to desired output format (based on config)
+    file_path = convert(final_items, config)
+
+    print(f"\nSaved output to: {file_path}")
 
 
 if __name__ == "__main__":
