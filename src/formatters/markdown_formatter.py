@@ -64,4 +64,8 @@ def format_item(item: FinalItem) -> str:
     if item.url:
         parts.append(f"\n**Source:** {item.url}")
 
+    # Priority:
+    if item.priority:
+        parts.append(f"\n**Priority:** {item.priority}")
+
     return "\n\n".join(parts)
