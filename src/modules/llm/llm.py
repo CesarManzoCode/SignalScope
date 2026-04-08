@@ -32,7 +32,8 @@ async def process_items(
             key_points=parsed.get("key_points", []),
             details=parsed.get("details", ""),
             source=item.source,
-            url=item.url
+            url=item.url,
+            priority=parsed.get("priority", "optional")
         )
 
         results.append(final_item)
