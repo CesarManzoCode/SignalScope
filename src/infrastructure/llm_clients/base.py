@@ -3,6 +3,8 @@ from typing import Protocol, runtime_checkable
 import os
 from dotenv import load_dotenv
 
+from core.types.llm_response import LLMResponse
+
 load_dotenv()
 
 def get_env(key: str, default: str | None = None) -> str:
@@ -20,7 +22,7 @@ class LLMClient(Protocol):
     with the system.
     """
 
-    async def generate(self, prompt: str) -> str:
+    async def generate(self, prompt: str) -> LLMResponse:
         """
         Generate a response from the LLM.
 
