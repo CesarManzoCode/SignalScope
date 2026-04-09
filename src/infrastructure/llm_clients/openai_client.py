@@ -1,5 +1,7 @@
 from typing import Optional
 from openai import AsyncOpenAI
+from openai.types.chat import ChatCompletionUserMessageParam
+
 
 from infrastructure.llm_clients.base import get_env
 
@@ -17,9 +19,13 @@ class OpenAIClient:
         """
         Send a prompt to OpenAI and return the generated response.
         """
+        messages: list[ChatCompletionUserMessageParam] = [
+            {"role": "user", "content": prompt}
+        ]
+
         response = await self.client.chat.completions.create(
             model=self.model,
-            messages=[{"role": "user", "content": prompt}],
+            messages=messages,
         )
 
         content = response.choices[0].message.content
