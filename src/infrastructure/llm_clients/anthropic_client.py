@@ -1,10 +1,10 @@
 from typing import Optional
 from anthropic import AsyncAnthropic
 
-from infrastructure.llm_clients.base import get_env
+from infrastructure.llm_clients.base import get_env, LLMClient
 
 
-class AnthropicClient:
+class AnthropicClient(LLMClient):
     """
     Anthropic LLM client using messages API.
     """

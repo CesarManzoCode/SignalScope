@@ -3,10 +3,10 @@ from openai import AsyncOpenAI
 from openai.types.chat import ChatCompletionUserMessageParam
 
 
-from infrastructure.llm_clients.base import get_env
+from infrastructure.llm_clients.base import get_env, LLMClient
 
 
-class OpenAIClient:
+class OpenAIClient(LLMClient):
     """
     OpenAI LLM client using async chat completions API.
     """

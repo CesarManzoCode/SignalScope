@@ -1,10 +1,10 @@
 from typing import Optional
 import httpx
 
-from infrastructure.llm_clients.base import get_env
+from infrastructure.llm_clients.base import get_env, LLMClient
 
 
-class OllamaClient:
+class OllamaClient(LLMClient):
     """
     Ollama local LLM client using HTTP API.
     """
