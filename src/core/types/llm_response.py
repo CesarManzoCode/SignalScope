@@ -3,4 +3,6 @@ from dataclasses import dataclass
 @dataclass
 class LLMResponse:
     content: str
-    tokens: int
+    input_tokens: int
+    output_tokens: int
+    total_tokens: int
