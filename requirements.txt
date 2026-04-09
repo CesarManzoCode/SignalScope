@@ -2,3 +2,4 @@ httpx
 openai
 anthropic
 python-dotenv
+tiktoken
