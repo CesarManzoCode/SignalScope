@@ -21,7 +21,7 @@ async def process_items(
         prompt = build_full_prompt(content, protocols)
 
         response = await llm_client.generate(prompt)
-        parsed = safe_json_load(response)
+        parsed = safe_json_load(response.content)
 
         results.append(
             FinalItem(
@@ -31,7 +31,8 @@ async def process_items(
                 details=parsed.get("details", ""),
                 source=item.source,
                 url=item.url,
-                priority=parsed.get("priority", "optional")
+                priority=parsed.get("priority", "optional"),
+                tokens=response.total_tokens
             )
         )
 

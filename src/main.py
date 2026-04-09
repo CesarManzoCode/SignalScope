@@ -53,6 +53,12 @@ async def main():
 
     print(f"\nSaved output to: {file_path}")
 
+    tokens = 0
+    for item in raw_outputs:
+        tokens += item.tokens
+
+    print(f"Tokens: {tokens}")
+
 
 if __name__ == "__main__":
     asyncio.run(main())
