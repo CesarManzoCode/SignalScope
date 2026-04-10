@@ -1,23 +1,13 @@
-from dataclasses import dataclass
-from typing import Callable, Awaitable
+from typing import Any
+from core.types.source import Source
 
 
-@dataclass
-class RawItem:
-    pass
+def select_sources(sources: list[Source], config: dict[str, Any]) -> list[Source]:
+    mode = config.get("mode") or "dev"
 
-
-@dataclass
-class Source:
-    name: str
-    category: str
-    fetch: Callable[[], Awaitable[list[RawItem]]]
-
-
-def select_sources(sources: list[Source], config: dict) -> list[Source]:
-    mode = config.get("mode", "dev")
-    include_list = config.get("sources", {}).get("include", [])
-    exclude_list = config.get("sources", {}).get("exclude", [])
+    got_sources = config.get("sources") or {}
+    include_list = got_sources.get("include") or []
+    exclude_list = got_sources.get("exclude") or []
 
     if include_list:
         filtered = [s for s in sources if s.name in include_list]
