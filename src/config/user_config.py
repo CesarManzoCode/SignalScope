@@ -1,12 +1,12 @@
 import json
 from pathlib import Path
-from typing import Any, Dict
+from typing import Any
 
 
 CONFIG_PATH = Path(__file__).parent / "user_config.json"
 
 
-def load_user_config() -> Dict[str, Any]:
+def load_user_config() -> dict[str, Any]:
     """
     Load user configuration from JSON file.
 
