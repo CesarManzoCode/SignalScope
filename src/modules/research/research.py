@@ -1,5 +1,5 @@
 """
-research_runner.py
+research.py
 
 Concurrent research orchestrator with advanced error handling,
 timeout enforcement, retry logic, and structured result reporting.
